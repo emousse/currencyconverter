@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Oclock</title>
+    <link rel="stylesheet" href="https://unpkg.com/purecss@1.0.1/build/pure-min.css" integrity="sha384-oAOxQR6DkCoMliIh8yFnu25d7Eq/PHS21PClpwjOTeU2jRSq11vu66rf90/cZr47" crossorigin="anonymous">
+    <link rel="stylesheet" href="custom.css">
+    <link rel="stylesheet" href="currency-flags.css">
+    <script src="app.js"></script>
+</head>
+<body>
+    <form class="pure-form pure-form-stacked">
+        <fieldset>
+            <legend>A Stacked Form</legend>
+    
+            <label for="amount">Amount</label>
+            <input id="amount" type="number" onchange="currencyConverter()" placeholder="0.0000">
+            <span class="pure-form-message">This is a required field.</span>
+
+    
+            <label for="currency">Currency</label>
+                        
+            <div class="pure-menu pure-menu-scrollable custom-restricted">
+                    <a href="#" class="pure-menu-link pure-menu-heading">Yahoo</a>
+                    <input type="text" placeholder="Search.." id="myInput" onkeyup="filterFunction()">
+                    <ul id="currency" class="pure-menu-list">
+                    </ul>
+                    <div id="loader" class="balls">
+                            <div></div>
+                            <div></div>
+                            <div></div>
+                    </div>  
+            </div>
+    
+        </fieldset>
+    </form>
+</body>
+</html>
