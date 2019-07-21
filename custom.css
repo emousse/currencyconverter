@@ -43,9 +43,30 @@
       display: none;
   }
 
+  .active{
+      background-color: red;
+  }
+
   .custom-restricted {
     height: 160px;
     width: 150px;
     border: 1px solid gray;
     border-radius: 4px;
 }
+
+#myInput{
+    position: sticky;
+    top: 5px;
+    z-index: 999;
+}
+
+menu-heading, .pure-menu-link {
+    padding: .5em 1em;
+}
+.m-link {
+    color: #777;
+}
+.m-link {
+    display: block;
+    text-decoration: none;
+    white-space: nowrap;
