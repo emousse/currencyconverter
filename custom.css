@@ -1,4 +1,13 @@
-.balls {
+body{
+    background-color: #84dcc6;
+}
+
+
+/* Les FX
+
+
+ */
+ .balls {
     width: 4em;
     display: flex;
     flex-flow: row nowrap;
@@ -38,29 +47,34 @@
       transform: translateX(100%);
     }
   }
-  
+
+/*   Helper
+**
+ */  
   .none{
       display: none;
   }
 
   .active{
-      background-color: red;
+      background-color: #ee4466;
   }
 
   .custom-restricted {
-    height: 160px;
-    width: 150px;
+    height: 160px;/* 
     border: 1px solid gray;
-    border-radius: 4px;
+    border-radius: 4px; */
 }
+input {
+    border-top-style: hidden!important;
+    border-right-style: hidden!important;
+    border-left-style: hidden!important;
+    border-bottom-style: groove!important;
+    }
 
 #myInput{
     position: sticky;
     top: 5px;
     z-index: 999;
-}
-fieldset{
-    display: inline-block;
 }
 .splash{
     width: 100%;
@@ -68,13 +82,17 @@ fieldset{
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-direction: column;
 }
 .form-flex{
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: flex-start;
     flex-wrap: wrap;
+    background-color: #fffbfa;
+    padding: 20px;
 }
+
 .m-link {
     padding: .5em 1em;
 }
@@ -85,3 +103,11 @@ fieldset{
     display: block;
     text-decoration: none;
     white-space: nowrap;
+}
+
+fieldset {
+    display: inline-block;
+    height: 160px;
+    padding: 20px!important;
+ 
+}

@@ -12,12 +12,12 @@
 </head>
 <body>
     <div class="splash">
+        <h1>Convertisseur de devises</h1>
             <form class="pure-form pure-form-stacked form-flex">
                     <fieldset>
                         <legend>Entrez un montant</legend>
                 
-                        <label for="amount">Amount</label>
-                        <input id="amount" class="test" type="number" onchange="currencyConverter()" placeholder="0.0000" step="any">
+                        <input id="amount" class="test" type="number" placeholder="0.0000" step="any">
                         <span class="pure-form-message">EUR</span>
             
                     </fieldset>
@@ -25,7 +25,6 @@
                         <legend>Choisissez une devise.</legend>
                                 
                         <div class="pure-menu pure-menu-scrollable custom-restricted">
-                                <!--<a href="#" class="pure-menu-link pure-menu-heading">Yahoo</a>-->
                                 <input type="text" placeholder="Search.." id="myInput" onkeyup="filterFunction()">
                                 <ul id="currency" class="pure-menu-list">
                                 </ul>
@@ -37,8 +36,8 @@
                         </div>
                     </fieldset>
                     <fieldset>
-                        <legend>Admirez ;)</legend>
-                        <label for="res">Résultat</label>
+                        <legend class="last">Admirez ;)</legend>
+                        <!-- <label for="res">Résultat</label> -->
                         <input id="res" type="text" placeholder="0.0000" disabled>
                         <span id="resCurrency" class="pure-form-message">USD</span>
                     </fieldset>

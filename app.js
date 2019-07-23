@@ -34,29 +34,29 @@ function filterFunction() {
 }
 
 function changeCurrency(element){
-  console.log(element.dataset.currency)
-  const rate = currencyList[selectedCurrency]
-  let convert = Number(rate) * Number(document.querySelector('#amount').value)
+  selectedCurrency = element.dataset.currency
+  let convert = calculate(Number(document.querySelector('#amount').value))
   console.log(convert);
 
   document.querySelector('#currency .active').classList.toggle('active')
   document.querySelector('#res').value = convert
-  selectedCurrency = element.dataset.currency
+  
   document.querySelector('#resCurrency').textContent = selectedCurrency
 
   element.classList.toggle('active')
-  element.preventDefault()
 }
 
-function convert(event){
-  const rate = currencyList[selectedCurrency]
-  let convert = Number(rate) * Number(event.target.value)
+function calculate(input){
+  return (Number(input) * Number(currencyList[selectedCurrency])).toFixed(4)
+}
+
+function convertOnInput(event){
+  let convert = calculate(event.target.value)
   console.log(convert);
   
   document.querySelector('#res').value = convert
 }
 
-function currencyConverter(){
     fetch('http://data.fixer.io/api/' + endpoint + '?access_key=' + access_key)
     .then(response => response.json())         
     .then(data => {     
@@ -69,7 +69,6 @@ function currencyConverter(){
       currencyList = data.rates
       makeCurrencyList(currencyList)
     })
-}
 
 //listeners
-amountInput.addEventListener('input',convert)
+amountInput.addEventListener('input',convertOnInput)
