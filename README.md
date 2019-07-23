@@ -1,6 +1,6 @@
 # o'converter
 
-Convertisseur universel de devise
+Convertisseur universel de devises
 
 ## Recette
 
