@@ -14,7 +14,7 @@ Convertisseur universel de devise
 
 **3. Pleins de petits drapeau**
 
-- Merci [currency-flags]https://github.com/transferwise/currency-flags
+- Merci https://github.com/transferwise/currency-flags
 
 
 ## Contributing
