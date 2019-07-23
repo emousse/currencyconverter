@@ -1,74 +1,90 @@
-let selectedCurrency = 'USD'
-let currencyList
-const endpoint = 'latest'
-const access_key = 'b1fd9f5a8011500eeab3b6af513bcefb'
-let amountInput = document.getElementById('amount')
+let selectedCurrency = 'USD';
+let currencyList;
+const endpoint = 'latest';
+const access_key = 'b1fd9f5a8011500eeab3b6af513bcefb';
+let amountInput = document.getElementById('amount');
 
-function makeCurrencyList(currencyRates){
-  const domCurrency = document.querySelector('#currency');
-  
-  for(rate in currencyRates){
-    //let option = new Option(rate, currencyRates[rate]);
-    //domCurrency.appendChild(option)
-    domCurrency.insertAdjacentHTML(
-      'beforeend',
-      `<li class="pure-menu-item"><a href="#" onclick="changeCurrency(this)" data-currency=${rate} class="m-link ${rate == selectedCurrency ? 'active' : '' }"><div class="currency-flag currency-flag-${rate.toLowerCase()}"></div>${rate}</a></li>`
-    )
-  }
-}
+/**
+ * Fonction appelée dans le fetch, initialise la liste des taux des devises dazns le DOM
+ * @param currencyRates
+ */
+function makeCurrencyList(currencyRates) {
+    const domCurrency = document.querySelector('#currency');
 
-function filterFunction() {
-  var input, filter, ul, li, a, i;
-  input = document.getElementById("myInput");
-  filter = input.value.toUpperCase();
-  div = document.getElementById("currency");
-  a = div.getElementsByTagName("a");
-  for (i = 0; i < a.length; i++) {
-    txtValue = a[i].textContent || a[i].innerText;
-    if (txtValue.toUpperCase().indexOf(filter) > -1) {
-      a[i].style.display = "";
-    } else {
-      a[i].style.display = "none";
+    for (let rate in currencyRates) {
+        domCurrency.insertAdjacentHTML(
+            'beforeend',
+            `<li class="pure-menu-item"><a href="#" onclick="changeCurrency(this)" data-currency=${rate} class="m-link ${rate == selectedCurrency ? 'active' : ''}"><div class="currency-flag currency-flag-${rate.toLowerCase()}"></div>${rate}</a></li>`
+        );
     }
-  }
 }
 
-function changeCurrency(element){
-  selectedCurrency = element.dataset.currency
-  let convert = calculate(Number(document.querySelector('#amount').value))
-  console.log(convert);
-
-  document.querySelector('#currency .active').classList.toggle('active')
-  document.querySelector('#res').value = convert
-  
-  document.querySelector('#resCurrency').textContent = selectedCurrency
-
-  element.classList.toggle('active')
+/**
+ * Fonction appelée lors d'un input dans la recherche des devises
+ */
+function filterFunction() {
+    let input, filter, a, i;
+    input = document.getElementById("myInput");
+    filter = input.value.toUpperCase();
+    div = document.getElementById("currency");
+    a = div.getElementsByTagName("a");
+    for (i = 0; i < a.length; i++) {
+        txtValue = a[i].textContent || a[i].innerText;
+        if (txtValue.toUpperCase().indexOf(filter) > -1) {
+            a[i].style.display = "";
+        } else {
+            a[i].style.display = "none";
+        }
+    }
 }
 
-function calculate(input){
-  return (Number(input) * Number(currencyList[selectedCurrency])).toFixed(4)
+/**
+ * Fonction appelée lors du changement de devise, recalcul ett affichage
+ * @param element
+ */
+function changeCurrency(element) {
+    selectedCurrency = element.dataset.currency;
+    let convert = calculate(Number(document.querySelector('#amount').value));
+    console.log(convert);
+
+    document.querySelector('#currency .active').classList.toggle('active');
+    document.querySelector('#res').value = convert;
+
+    document.querySelector('#resCurrency').textContent = selectedCurrency;
+
+    element.classList.toggle('active');
 }
 
-function convertOnInput(event){
-  let convert = calculate(event.target.value)
-  console.log(convert);
-  
-  document.querySelector('#res').value = convert
+/**
+ * Fonction de calcul, appelée lors d'un changement de valeur ou de devise
+ * @param input
+ * @returns {string}
+ */
+function calculate(input) {
+    return (Number(input) * Number(currencyList[selectedCurrency])).toFixed(4);
 }
 
-    fetch('http://data.fixer.io/api/' + endpoint + '?access_key=' + access_key)
-    .then(response => response.json())         
-    .then(data => {     
-      document.querySelector('#loader').className = 'none'                         
-      /* const now = new Date().toLocaleTimeString();
-      const li = document.createElement('li');
-      
-      li.textContent = `${now} : ${data}`;
-      userList.prepend(li); */
-      currencyList = data.rates
-      makeCurrencyList(currencyList)
-    })
+/**
+ * Fonction callback du listener input, appelée lors d'un changement de valeur
+ * @param event
+ */
+function convertOnInput(event) {
+    let convert = calculate(event.target.value);
+    document.querySelector('#res').value = convert;
+}
 
-//listeners
-amountInput.addEventListener('input',convertOnInput)
+/**
+ * GET sur l'api fixer, renvoie un json des devises & taux de change à jour
+ */
+fetch('http://data.fixer.io/api/' + endpoint + '?access_key=' + access_key)
+    .then(response => response.json())
+    .then(data => {
+        document.querySelector('#loader').className = 'none';
+        currencyList = data.rates;
+        makeCurrencyList(currencyList);
+    });
+
+/**
+ * Ecoute de l'input du montant
+ */
+amountInput.addEventListener('input', convertOnInput);

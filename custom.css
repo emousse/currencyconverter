@@ -1,4 +1,4 @@
-body{
+body {
     background-color: #84dcc6;
 }
 
@@ -7,76 +7,76 @@ body{
 
 
  */
- .balls {
+.balls {
     width: 4em;
     display: flex;
     flex-flow: row nowrap;
     align-items: center;
     justify-content: space-between;
-  }
-  
-  .balls div {
+}
+
+.balls div {
     width: 0.8em;
     height: 0.8em;
     border-radius: 50%;
     background-color: #fc2f70;
-  }
-  
-  .balls div:nth-of-type(1) {
+}
+
+.balls div:nth-of-type(1) {
     transform: translateX(-100%);
     animation: left-swing 0.5s ease-in alternate infinite;
-  }
-  
-  .balls div:nth-of-type(3) {
+}
+
+.balls div:nth-of-type(3) {
     transform: translateX(-95%);
     animation: right-swing 0.5s ease-out alternate infinite;
-  }
-  
-  @keyframes left-swing {
+}
+
+@keyframes left-swing {
     50%,
     100% {
-      transform: translateX(95%);
+        transform: translateX(95%);
     }
-  }
-  
-  @keyframes right-swing {
+}
+
+@keyframes right-swing {
     50% {
-      transform: translateX(-95%);
+        transform: translateX(-95%);
     }
     100% {
-      transform: translateX(100%);
+        transform: translateX(100%);
     }
-  }
+}
 
 /*   Helper
 **
- */  
-  .none{
-      display: none;
-  }
-
-  .active{
-      background-color: #ee4466;
-  }
-
-  .custom-restricted {
-    height: 160px;/* 
-    border: 1px solid gray;
-    border-radius: 4px; */
+ */
+.none {
+    display: none;
 }
-input {
-    border-top-style: hidden!important;
-    border-right-style: hidden!important;
-    border-left-style: hidden!important;
-    border-bottom-style: groove!important;
-    }
 
-#myInput{
+.active {
+    background-color: #ee4466;
+}
+
+.custom-restricted {
+    height: 160px;
+}
+
+input {
+    border-top-style: hidden !important;
+    border-right-style: hidden !important;
+    border-left-style: hidden !important;
+    border-bottom-style: groove !important;
+}
+
+#myInput {
     position: sticky;
     top: 5px;
     z-index: 999;
 }
-.splash{
+
+.splash {
     width: 100%;
     height: 100vh;
     display: flex;
@@ -84,7 +84,8 @@ input {
     align-items: center;
     flex-direction: column;
 }
-.form-flex{
+
+.form-flex {
     display: flex;
     justify-content: center;
     align-items: flex-start;
@@ -96,9 +97,11 @@ input {
 .m-link {
     padding: .5em 1em;
 }
+
 .m-link {
     color: #777;
 }
+
 .m-link {
     display: block;
     text-decoration: none;
@@ -108,6 +111,6 @@ input {
 fieldset {
     display: inline-block;
     height: 160px;
-    padding: 20px!important;
- 
+    padding: 20px !important;
+
 }
