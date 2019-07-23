@@ -45,11 +45,9 @@ function filterFunction() {
 function changeCurrency(element) {
     selectedCurrency = element.dataset.currency;
     let convert = calculate(Number(document.querySelector('#amount').value));
-    console.log(convert);
 
     document.querySelector('#currency .active').classList.toggle('active');
     document.querySelector('#res').value = convert;
-
     document.querySelector('#resCurrency').textContent = selectedCurrency;
 
     element.classList.toggle('active');
@@ -69,8 +67,7 @@ function calculate(input) {
  * @param event
  */
 function convertOnInput(event) {
-    let convert = calculate(event.target.value);
-    document.querySelector('#res').value = convert;
+    document.querySelector('#res').value = calculate(event.target.value);
 }
 
 /**
@@ -79,10 +76,17 @@ function convertOnInput(event) {
 fetch('http://data.fixer.io/api/' + endpoint + '?access_key=' + access_key)
     .then(response => response.json())
     .then(data => {
-        document.querySelector('#loader').className = 'none';
-        currencyList = data.rates;
-        makeCurrencyList(currencyList);
-    });
+        console.log(data);
+        if (data.success){
+            document.querySelector('#loader').className = 'none';
+            currencyList = data.rates;
+            makeCurrencyList(currencyList);
+        } else {
+            document.querySelector('#loader').insertAdjacentHTML('beforeend',`<span>Oups, ou sont les devises?`);
+        }
+
+    })
+    .catch(err => console.log(err));
 
 /**
  * Ecoute de l'input du montant

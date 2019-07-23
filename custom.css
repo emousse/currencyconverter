@@ -112,5 +112,14 @@ fieldset {
     display: inline-block;
     height: 160px;
     padding: 20px !important;
+    margin-bottom: 20px!important;
+}
 
+@media screen and (max-width: 740px) {
+    .form-flex{
+        flex-direction: column;
+    }
+    fieldset{
+        height: auto;
+    }
 }
