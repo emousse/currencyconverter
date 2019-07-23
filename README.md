@@ -1,4 +1,4 @@
-# o'currency converter
+# o'converter
 
 Convertisseur universel de devise
 
@@ -12,7 +12,7 @@ Convertisseur universel de devise
 
 - Ajout d'un peu de css custom/css fx
 
-**3. Pleins de petits drapeau**
+**3. Pleins de petits drapeaux**
 
 - Merci https://github.com/transferwise/currency-flags
 
